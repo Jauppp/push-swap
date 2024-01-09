@@ -3,3 +3,4 @@ push_swap
 LIBFT/.dir_build/
 checker_linux
 tester/
+visualizer/
