@@ -6,13 +6,13 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:53:21 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/05 14:46:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 14:16:27 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*stack_new(int data)
+t_node	*stack_new(long data)
 {
 	t_node	*new_node;
 

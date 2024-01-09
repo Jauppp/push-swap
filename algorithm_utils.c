@@ -6,13 +6,13 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:04:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/08 16:01:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 17:17:20 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max(t_node *stack)
+unsigned int	find_max(t_node *stack)
 {
 	size_t			i;
 	size_t			len;
@@ -33,7 +33,7 @@ int	find_max(t_node *stack)
 	return (max);
 }
 
-int	find_min(t_node *stack)
+unsigned int	find_min(t_node *stack)
 {
 	size_t			i;
 	size_t			len;
@@ -55,24 +55,3 @@ int	find_min(t_node *stack)
 	return (min);
 }
 
-void	get_index(t_node *stack)
-{
-	size_t			i;
-	size_t			len;
-	t_node			*head;
-	unsigned int	index;
-
-	len = get_list_len(stack);
-	i = -1;
-	index = 0;
-
-	head = stack;
-	while (++i < len)
-	{
-		if (head->data > stack->data)
-			index++;
-		stack = stack->next;
-	}
-	stack = head;
-	stack->index = index;
-}

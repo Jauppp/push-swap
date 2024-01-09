@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:45:49 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/08 17:10:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 18:30:57 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_stack(t_node *stack_a, t_node *stack_b)
 	size_t	alen;
 	size_t	blen;
 
-	ft_printf("------------------------------------------------------------\n");
+	printf("------------------------------------------------------------\n");
 	temp_b = stack_b;
 	temp_a = stack_a;
 	if (!stack_a && !stack_b)
@@ -40,28 +40,28 @@ void	print_stack(t_node *stack_a, t_node *stack_b)
 		{
 			if (i < alen)
 			{
-				ft_printf("%d || %d\t\t", stack_a->data, stack_a->index);
+				printf("%ld || %d\t\t", stack_a->data, stack_a->index);
 				i++;
 				stack_a = stack_a->next;
 			}
 			else
-				ft_printf("\t\t");
+				printf("\t\t");
 			if (j < blen)
 			{
-				ft_printf("%d || %d\n", stack_b->data, stack_b->index);
+				printf("%ld || %d\n", stack_b->data, stack_b->index);
 				j++;
 				stack_b = stack_b->next;
 			}
 			else
-				ft_printf("\n");
+				printf("\n");
 		}
 	}
 	stack_a = temp_a;
 	stack_b = temp_b;
-	ft_printf("--------\t--------\n");
-	ft_printf(" a || i");
-	ft_printf(" \t b || i\n");
-	ft_printf("------------------------------------------------------------\n");
+	printf("--------\t--------\n");
+	printf(" a || i");
+	printf(" \t b || i\n");
+	printf("------------------------------------------------------------\n");
 }
 
 void	print_single_stack(t_node *stack, int c)
@@ -76,8 +76,8 @@ void	print_single_stack(t_node *stack, int c)
 	while (i < len)
 	{
 		if (c == 'b')
-			ft_printf("\t\t");
-		ft_printf("%d || %d\n", stack->data, stack->index);
+			printf("\t\t");
+		printf("%ld || %d\n", stack->data, stack->index);
 		stack = stack->next;
 		i++;
 	}

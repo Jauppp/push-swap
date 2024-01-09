@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:20:53 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/02 17:33:51 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 14:21:36 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(char *nptr);
+long	ft_atoi_intmax(char *nptr);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
+int		ft_isdigit_negative(int c);
 int		ft_isprint(int c);
 int		ft_lstsize(t_list *lst);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);

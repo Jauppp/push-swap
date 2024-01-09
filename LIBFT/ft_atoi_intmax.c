@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_intmax.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 09:46:06 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/09 12:17:50 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2024/01/09 12:18:19 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/01/09 14:17:09 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 static size_t	ft_skip_space(char *str)
 {
@@ -33,11 +34,11 @@ static int	ft_issign(char *str, int i)
 		return (sign);
 }
 
-int	ft_atoi(char *nptr)
+long	ft_atoi_intmax(char *nptr)
 {
-	size_t		i;
 	int			sign;
 	long		nbr;
+	size_t		i;
 
 	nbr = 0;
 	if (!nptr)
@@ -48,13 +49,8 @@ int	ft_atoi(char *nptr)
 		i++;
 	while (ft_isdigit(nptr[i]))
 	{
-		if (((nbr * 10 + nptr[i] - '0') / 10 != nbr))
-		{
-			if (sign < 0)
-				return ((int)LONG_MIN);
-			else
-				return ((int)LONG_MAX);
-		}
+		if (nbr >= INT_MAX || nbr <= INT_MIN)
+			return (nbr * sign);
 		nbr = nbr * 10 + nptr[i] - '0';
 		i++;
 	}

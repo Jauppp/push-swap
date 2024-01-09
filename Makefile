@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:29:44 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/01/08 13:46:58 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/01/09 17:51:37 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,15 @@ MAKEFLAGS += --no-print-directory
 BUILD_DIR := .dir_build
 LIBFT_DIR := LIBFT
 
-SRCS := main.c \
+SRCS := algorithm_utils.c \
 		algorithm.c \
-		parsing.c \
-		rules.c \
 		both_stack_rules.c \
 		chained_lists_utils.c \
 		display.c \
-		algorithm_utils.c \
+		main.c \
+		parsing_utils.c \
+		parsing.c \
+		rules.c \
 		
 OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
 DEPS := $(OBJS:%.o=%.d)
@@ -64,16 +65,14 @@ fclean: clean
 re: fclean all
 
 run: all
-	@ echo "params : 2 3 1"
-	@./$(NAME) "2 3 1"
+	@echo "params : 40 25 10 64 47 37 31 16 15 51 84 48 65 91 28 70 60 97 14 38 17 27"
+	@./$(NAME) "40 25 10 64 47 37 31 16 15 51 84 48 65 91 28 70 60 97 14 38 17 27" > output.txt
+	@echo -n "nb instructions : "
+	@awk '/sa|sb|ss|ra|rb|rr|rra|rrb|rrr|pa|pb/' output.txt | wc -l
 
-invalid: all
-	@echo "params : a e 125"
-	@valgrind ./$(NAME) "a e 125"
-
-dup: all
-	@echo "params : 125 125"
-	@valgrind ./$(NAME) "125 125"
+display: run
+	@awk '/------------------------------------------------------------/{found = 1} \
+	found' output.txt | cat
 
 seg: all
 	@echo "params : 45 26 35 78 95 84 12"
@@ -85,8 +84,8 @@ leaks: all
 
 debug: all
 	@echo "Launching debugger"
-	@echo "params : -2 -3 -1"
-	@gdb -tui --args ./$(NAME) "-2 -3 -1"
+	@echo "params : 45 26 35 78 95 84 12"
+	@gdb -tui --args ./$(NAME) "45 26 35 78 95 84 12"
 
 help:
 	@echo "Make \t\t makes push_swap.exe"
@@ -105,5 +104,5 @@ kitty:
 	@echo " _.|o o  |_   ) ) "
 	@echo "-(((---(((--------"
 
-.PHONY : clean fclean all re run seg leaks debug help kitty dup invalid
+.PHONY : clean fclean all re run seg leaks debug help kitty dup invalid display
 FORCE : 

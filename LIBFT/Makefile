@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 10:23:52 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/01/04 19:56:24 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/01/09 14:20:48 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CPPFLAGS = -MMD -MP
 
 BUILD_DIR := .dir_build
 SRCS := ft_atoi.c \
+		ft_atoi_intmax.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -67,6 +68,7 @@ SRCS := ft_atoi.c \
 		get_next_line.c \
 		get_next_line_utils.c \
 		ft_isspace.c \
+		ft_isdigit_negative.c \
 		
 OBJS := $(SRCS:%.c=$(BUILD_DIR)/%.o)
 				

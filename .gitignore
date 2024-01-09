@@ -1,6 +1,9 @@
-push_swap
 .dir_build/
-LIBFT/.dir_build/
+*.sh
+*.txt
 checker_linux
+LIBFT/.dir_build/
+pro_checker/
 tester/
 visualizer/
+gemartin-le-sang/
