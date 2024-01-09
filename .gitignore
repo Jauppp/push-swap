@@ -1,0 +1,5 @@
+push_swap
+.dir_build/
+LIBFT/.dir_build/
+checker_linux
+tester/
