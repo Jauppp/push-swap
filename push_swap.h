@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/09 18:31:07 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/10 15:32:41 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_stack
 
 int				check_duplicate_arg(t_node *stack);
 int				check_invalid_charset(char *str);
+int				find_rotate_direction(t_node *stack);
 int				is_neg_digit(int c);
 size_t			get_list_len(t_node *stack);
 t_node			*append_back(t_node **stack, t_node	*new_node);

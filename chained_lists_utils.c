@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:53:21 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/09 14:16:27 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/10 15:40:45 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ size_t	get_list_len(t_node *stack)
 	size_t	i;
 	t_node	*head;
 
+	if (!stack)
+		return (ERROR);
 	i = 0;
 	head = stack;
 	while (stack->next != head)

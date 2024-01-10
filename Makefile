@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:29:44 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/01/09 17:51:37 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/01/10 15:15:20 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,12 @@ RM := rm -rf
 
 all: $(NAME)
 
-$(LIBFT_DIR)/libft.a: FORCE
+$(LIBFT_DIR)/$(LIB): FORCE
 	@echo "Making LIBFT..."
 	@$(MAKE) -C $(LIBFT_DIR) $(LIB)
 	@echo
 
-$(NAME): $(LIBFT_DIR)/libft.a $(OBJS)
+$(NAME): $(LIBFT_DIR)/$(LIB) $(OBJS)
 	@echo
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFT_DIR) -lft
 	@echo "All done ! Thanks for waiting :)"
