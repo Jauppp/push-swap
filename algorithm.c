@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:11:30 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/10 15:43:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/10 16:14:08 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	sort(t_node **stack_a, t_node **stack_b)
 		}
 		if (*stack_b == NULL)
 			break ;
-		if (find_rotate_direction(*stack_b))
+		if (!find_rotate_direction(*stack_b, max))
 		{
 			while ((*stack_b)->index != max)
 				rotate(stack_b, 'b');
