@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:04:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/10 16:17:24 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/11 17:06:40 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ unsigned int	find_min(t_node *stack)
 	len = get_list_len(stack);
 	i = -1;
 	min = INT_MAX;
-
 	while (++i < len)
 	{
 		if (stack->index < min)
@@ -78,3 +77,4 @@ int	find_rotate_direction(t_node *stack, unsigned int max)
 	stack = head;
 	return (ERROR);
 }
+

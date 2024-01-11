@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/10 16:08:30 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/11 15:00:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,14 @@ void			reverse_rotate_ab(t_node **stack_a, t_node **stack_b);
 void			reverse_rotate(t_node **stack, int c);
 void			rotate_ab(t_node **stack_a, t_node **stack_b);
 void			rotate(t_node **stack, int c);
+void			sort(t_node **stack_a, t_node **stack_b);
+void			final_sort(t_node **stack_a, t_node **stack_b);
 void			sort_by_index(t_node **stack_a, t_node **stack_b);
 void			sort_small_stack(t_node **stack_a);
-void			sort(t_node **stack_a, t_node **stack_b);
 void			swap_ab(t_node **stack_a, t_node **stack_b);
 void			swap(t_node **stack, int c);
+void			pre_sort(t_node **stack_a, t_node **stack_b, const float chunk);
+
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:11:30 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/10 16:14:08 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/11 17:09:14 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	sort_small_stack(t_node **stack)
 {
-	size_t	len;
-	size_t	i;
+	ssize_t	len;
 
-	i = -1;
 	len = get_list_len(*stack);
-	while (++i < len)
+	while (len-- > 0)
 	{
 		if ((*stack)->index == find_max(*stack))
 		{
@@ -40,51 +38,83 @@ void	sort_small_stack(t_node **stack)
 void	sort_by_index(t_node **stack_a, t_node **stack_b)
 {
 	unsigned int	index;
+	size_t			len;
 
-	index = 0;
-	while (*stack_a)
+	index = find_min(*stack_a);
+	len = get_list_len(*stack_a);
+	while (len > 3)
 	{
 		if ((*stack_a)->index != index)
-			rotate(stack_a, 'a');
+		{
+			if (!find_rotate_direction(*stack_a, index))
+			{
+				while ((*stack_a)->index != index)
+					rotate(stack_a, 'a');
+			}
+			else
+			{
+				while ((*stack_a)->index != index)
+				{
+					reverse_rotate(stack_a, 'a');
+				}
+			}
+		}
 		else
 		{
 			push(stack_b, stack_a, 'b');
 			index++;
+			len--;
 		}
 	}
-	while (*stack_b)
-		push(stack_a, stack_b, 'a');
+	sort_small_stack(stack_a);
+	final_sort(stack_a, stack_b);
 }
 
 void	sort(t_node **stack_a, t_node **stack_b)
 {
 	const size_t	nb_nodes = get_list_len(*stack_a);
-	const float		chunk = (0.0000000053 * (nb_nodes * nb_nodes)) + (0.03 * nb_nodes) + 14.5;
-	size_t			num;
-	unsigned int	max;
+	const float		chunk = (0.0000000053 * (nb_nodes * nb_nodes)) + \
+						(0.03 * nb_nodes) + 14.5;
 
-	int secure = 0;
+	pre_sort(stack_a, stack_b, chunk);
+	sort_by_index(stack_a, stack_b);
+	final_sort(stack_a, stack_b);
+}
 
+
+void	pre_sort(t_node **stack_a, t_node **stack_b, const float chunk)
+{
+	const unsigned int	max = (find_max(*stack_a) - 11);
+	size_t				len;
+	size_t				num;
+
+	len = get_list_len(*stack_a);
 	num = 0;
-	while (*stack_a)
+	while (len > 11)
 	{
-		if ((*stack_a)->index <= num)
+		if ((*stack_a)->index <= num && (*stack_a)->index <= max)
 		{
 			push(stack_b, stack_a, 'b');
 			num++;
+			len--;
 		}
-		else if ((*stack_a) && (*stack_a)->index < (num + chunk))
+		else if ((*stack_a) && (*stack_a)->index < (num + chunk) \
+			&& (*stack_a)->index <= max)
 		{
 			push(stack_b, stack_a, 'b');
 			rotate(stack_b, 'b');
 			num++;
+			len--;
 		}
 		else
-		{
 			rotate(stack_a, 'a');
-		}
-		secure++;
 	}
+}
+
+void	final_sort(t_node **stack_a, t_node **stack_b)
+{
+	unsigned int	max;
+
 	max = find_max(*stack_b);
 	while (*stack_b)
 	{
@@ -93,7 +123,7 @@ void	sort(t_node **stack_a, t_node **stack_b)
 			push(stack_a, stack_b, 'a');
 			max--;
 		}
-		if (*stack_b == NULL)
+		if (!*stack_b)
 			break ;
 		if (!find_rotate_direction(*stack_b, max))
 		{
