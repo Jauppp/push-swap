@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:04:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/11 17:06:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/12 15:38:28 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ unsigned int	find_min(t_node *stack)
 	return (min);
 }
 
-int	find_rotate_direction(t_node *stack, unsigned int max)
+int	next_value_in_first_half(t_node *stack, unsigned int goal)
 {
 	size_t			i;
 	size_t			len;
@@ -67,7 +67,7 @@ int	find_rotate_direction(t_node *stack, unsigned int max)
 	head = stack;
 	while (++i < (len / 2))
 	{
-		if (stack->index == max)
+		if (stack->index == goal)
 		{
 			stack = head;
 			return (SUCCESS);
@@ -78,3 +78,27 @@ int	find_rotate_direction(t_node *stack, unsigned int max)
 	return (ERROR);
 }
 
+int	list_not_sorted(t_node *stack)
+{
+	t_node			*head;
+
+	head = stack;
+	while (stack->next != head)
+	{
+		if (stack->index > stack->next->index)
+		{
+			stack = head;
+			return (ERROR);
+		}
+		stack = stack->next;
+	}
+	stack = head;
+	return (SUCCESS);
+}
+
+void	pb_and_increment(t_node **a, t_node **b, size_t *len, size_t *num)
+{
+	push(b, a, 'b');
+	(*num)++;
+	(*len)--;
+}

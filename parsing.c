@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:13:16 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/09 17:16:40 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/11 17:35:14 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,3 @@ t_node	*parsing(t_node **stack, size_t argc, char *argv[])
 	init_index(stack);
 	return (*stack);
 }
-
-

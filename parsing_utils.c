@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:03:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/09 17:18:00 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/11 18:17:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	check_invalid_charset(char *str)
 	{
 		if (!ft_isdigit_negative(str[i]) && !ft_isspace(str[i]))
 		{
-			// if (str[i] == '-' && ft_isdigit(str[i + 1]))
-			// 	return (SUCCESS);
+			if (ft_isspace(str[i - 1]) && str[i] == '-' && ft_isdigit(str[i + 1]))
+				return (SUCCESS);
 			write(STDERR_FILENO, "Error\n", 6);
 			return (ERROR);
 		}

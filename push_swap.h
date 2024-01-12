@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/11 15:00:39 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/12 16:38:32 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@
 
 # define ERROR 1
 # define SUCCESS 0
-# define SMALL_STACK 4
-# define EQUATION 
+# define S_LIST  150
+# define M_LIST  300
+# define S_CHUNK 11.5
+# define M_CHUNK 14.5
+# define L_CHUNK 17.5
+# define NO_INTERMEDIATE_SORT 3
+# define INTERMEDIATE_SORT 19
+
 
 typedef struct s_stack
 {
@@ -32,35 +38,32 @@ typedef struct s_stack
 
 int				check_duplicate_arg(t_node *stack);
 int				check_invalid_charset(char *str);
-int				find_rotate_direction(t_node *stack, unsigned int max);
 int				is_neg_digit(int c);
+int				list_not_sorted(t_node *stack);
+int				next_value_in_first_half(t_node *stack, unsigned int goal);
 size_t			get_list_len(t_node *stack);
 t_node			*append_back(t_node **stack, t_node	*new_node);
 t_node			*append_front(t_node **stack, t_node *new_node);
 t_node			*check_invalid_values(t_node *stack);
-t_node			*free_stack(t_node **stack_a, t_node **stack_b);
-t_node			*init_stack(t_node **stack_a, char *arg);
+t_node			*free_stack(t_node **a, t_node **stack_b);
+t_node			*init_stack(t_node **a, char *arg);
 t_node			*parsing(t_node **stack, size_t argc, char *argv[]);
 t_node			*stack_new(long data);
 unsigned int	find_max(t_node *stack);
 unsigned int	find_min(t_node *stack);
+void			get_chunk_and_sort(t_node **a, t_node **stack_b);
 void			get_index(t_node *stack);
 void			init_index(t_node **stack);
+void			pb_and_increment(t_node **a, t_node **b, \
+				size_t *len, size_t *goal);
 void			print_single_stack(t_node *stack, int c);
-void			print_stack(t_node *stack_a, t_node *stack_b);
+void			print_stack(t_node *a, t_node *stack_b);
 void			push(t_node **to, t_node **from, int c);
-void			reverse_rotate_ab(t_node **stack_a, t_node **stack_b);
+void			reverse_rotate_ab(t_node **a, t_node **stack_b);
 void			reverse_rotate(t_node **stack, int c);
-void			rotate_ab(t_node **stack_a, t_node **stack_b);
+void			rotate_ab(t_node **a, t_node **stack_b);
 void			rotate(t_node **stack, int c);
-void			sort(t_node **stack_a, t_node **stack_b);
-void			final_sort(t_node **stack_a, t_node **stack_b);
-void			sort_by_index(t_node **stack_a, t_node **stack_b);
-void			sort_small_stack(t_node **stack_a);
-void			swap_ab(t_node **stack_a, t_node **stack_b);
+void			swap_ab(t_node **a, t_node **stack_b);
 void			swap(t_node **stack, int c);
-void			pre_sort(t_node **stack_a, t_node **stack_b, const float chunk);
-
-
 
 #endif

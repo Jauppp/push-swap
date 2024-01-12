@@ -6,13 +6,13 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:45:49 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/09 18:30:57 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/12 15:46:39 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_node *stack_a, t_node *stack_b)
+void	print_stack(t_node *a, t_node *b)
 {
 	t_node	*temp_a;
 	t_node	*temp_b;
@@ -22,42 +22,42 @@ void	print_stack(t_node *stack_a, t_node *stack_b)
 	size_t	blen;
 
 	printf("------------------------------------------------------------\n");
-	temp_b = stack_b;
-	temp_a = stack_a;
-	if (!stack_a && !stack_b)
+	temp_b = b;
+	temp_a = a;
+	if (!a && !b)
 		return ;
-	if (!stack_b && stack_a)
-		print_single_stack(stack_a, 'a');
-	else if (!stack_a && stack_b)
-		print_single_stack(stack_b, 'b');
-	else if (stack_a && stack_b)
+	if (!b && a)
+		print_single_stack(a, 'a');
+	else if (!a && b)
+		print_single_stack(b, 'b');
+	else if (a && b)
 	{
 		i = 0;
 		j = 0;
-		alen = get_list_len(stack_a);
-		blen = get_list_len(stack_b);
+		alen = get_list_len(a);
+		blen = get_list_len(b);
 		while (i < alen || j < blen)
 		{
 			if (i < alen)
 			{
-				printf("%ld || %d\t\t", stack_a->data, stack_a->index);
+				printf("%ld || %d\t\t", a->data, a->index);
 				i++;
-				stack_a = stack_a->next;
+				a = a->next;
 			}
 			else
 				printf("\t\t");
 			if (j < blen)
 			{
-				printf("%ld || %d\n", stack_b->data, stack_b->index);
+				printf("%ld || %d\n", b->data, b->index);
 				j++;
-				stack_b = stack_b->next;
+				b = b->next;
 			}
 			else
 				printf("\n");
 		}
 	}
-	stack_a = temp_a;
-	stack_b = temp_b;
+	a = temp_a;
+	b = temp_b;
 	printf("--------\t--------\n");
 	printf(" a || i");
 	printf(" \t b || i\n");

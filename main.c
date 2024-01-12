@@ -6,25 +6,29 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:50:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/11 14:56:43 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/12 15:44:57 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	basic_korean_sort(t_node **stack_a, t_node **stack_b);
-
 int	main(int argc, char *argv[])
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_node	*a;
+	t_node	*b;
 
 	if (!argv[1])
 		return (ERROR);
-	stack_a = NULL;
-	stack_b = NULL;
-	if (!parsing(&stack_a, argc, argv))
+	a = NULL;
+	b = NULL;
+	if (!parsing(&a, argc, argv))
 		return (ERROR);
-	sort(&stack_a, &stack_b);
-	free_stack(&stack_a, &stack_b);
+	if (list_not_sorted(a))
+		get_chunk_and_sort(&a, &b);
+	else
+	{
+		free_stack(&a, NULL);
+		return (ERROR);
+	}
+	free_stack(&a, &b);
 }
