@@ -1,0 +1,8 @@
+.dir_build/
+*.sh
+*.txt
+checker_linux
+LIBFT/.dir_build/
+pro_checker/
+tester/
+visualizer
