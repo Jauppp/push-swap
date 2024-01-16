@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:53:21 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/10 15:40:45 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/16 14:10:26 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,31 +70,31 @@ t_node	*append_front(t_node **stack, t_node *new_node)
 	return (*stack);
 }
 
-t_node	*free_stack(t_node **stack_a, t_node **stack_b)
+t_node	*free_stack(t_node **a, t_node **b)
 {
 	t_node	*temp;
 
-	if (stack_a && *stack_a)
+	if (a && *a)
 	{
-		(*stack_a)->prev->next = NULL;
-		while (*stack_a)
+		(*a)->prev->next = NULL;
+		while (*a)
 		{
-			temp = (*stack_a)->next;
-			free(*stack_a);
-			*stack_a = temp;
+			temp = (*a)->next;
+			free(*a);
+			*a = temp;
 		}
-		*stack_a = NULL;
+		*a = NULL;
 	}
-	if (stack_b && *stack_b)
+	if (b && *b)
 	{
-		(*stack_b)->prev->next = NULL;
-		while (*stack_b)
+		(*b)->prev->next = NULL;
+		while (*b)
 		{
-			temp = (*stack_b)->next;
-			free(*stack_b);
-			*stack_b = temp;
+			temp = (*b)->next;
+			free(*b);
+			*b = temp;
 		}
-		*stack_b = NULL;
+		*b = NULL;
 	}
 	return (NULL);
 }

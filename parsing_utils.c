@@ -6,53 +6,38 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:03:00 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/11 18:17:32 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/16 14:12:11 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_index(t_node **stack)
-{
-	const size_t	len = get_list_len(*stack);
-	size_t			i;
-	t_node			*head;
-
-	i = -1;
-	head = *stack;
-	while (++i < len)
-	{
-		get_index(*stack);
-		*stack = (*stack)->next;
-	}
-	*stack = head;
-}
-
-t_node	*check_invalid_values(t_node *stack)
+int	data_is_invalid(t_node *stack)
 {
 	size_t		i;
 	size_t		len;
 	t_node		*head;
 
-	i = -1;
+	i = 0;
 	len = get_list_len(stack);
 	head = stack;
-	while (++i < len)
+	while (i < len)
 	{
-		if (check_duplicate_arg(stack))
-			return (free_stack(&stack, NULL));
+		if (data_is_duplicate(stack))
+			return (ERROR);
 		if (stack->data > INT_MAX || stack->data < INT_MIN)
 		{
 			write(STDERR_FILENO, "Error\n", 6);
-			return (free_stack(&stack, NULL));
+			return (ERROR);
 		}
 		stack = stack->next;
+		i++;
 	}
 	stack = head;
-	return (stack);
+	return (SUCCESS);
 }
 
-int	check_duplicate_arg(t_node *stack)
+int	data_is_duplicate(t_node *stack)
 {
 	long		current;
 	t_node		*head;
@@ -71,7 +56,7 @@ int	check_duplicate_arg(t_node *stack)
 	return (SUCCESS);
 }
 
-int	check_invalid_charset(char *str)
+int	arg_is_not_digit(char *str)
 {
 	size_t	i;
 
@@ -80,8 +65,16 @@ int	check_invalid_charset(char *str)
 	{
 		if (!ft_isdigit_negative(str[i]) && !ft_isspace(str[i]))
 		{
-			if (ft_isspace(str[i - 1]) && str[i] == '-' && ft_isdigit(str[i + 1]))
-				return (SUCCESS);
+			write(STDERR_FILENO, "Error\n", 6);
+			return (ERROR);
+		}
+		i++;
+	}
+	i = 0;
+	while (str[i])
+	{
+		if (i != 0 && str[i] == '-' && !ft_isspace(str[i - 1]))
+		{
 			write(STDERR_FILENO, "Error\n", 6);
 			return (ERROR);
 		}
@@ -90,24 +83,22 @@ int	check_invalid_charset(char *str)
 	return (SUCCESS);
 }
 
-void	get_index(t_node *stack)
+int	arg_is_empty(char *str)
 {
-	size_t			i;
-	size_t			len;
-	t_node			*head;
-	unsigned int	index;
+	size_t	i;
 
-	len = get_list_len(stack);
-	i = -1;
-	index = 0;
-
-	head = stack;
-	while (++i < len)
+	i = 0;
+	if (!str || !str[i])
 	{
-		if (head->data > stack->data)
-			index++;
-		stack = stack->next;
+		write(STDERR_FILENO, "Error\n", 6);
+		return (ERROR);
 	}
-	stack->index = index;
-	stack = head;
+	while (str[i])
+	{
+		if (!ft_isspace(str[i]))
+			return (SUCCESS);
+		i++;
+	}
+	write(STDERR_FILENO, "Error\n", 6);
+	return (ERROR);
 }

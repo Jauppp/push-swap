@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:04:38 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/12 15:38:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/16 14:09:29 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ unsigned int	find_min(t_node *stack)
 	return (min);
 }
 
-int	next_value_in_first_half(t_node *stack, unsigned int goal)
+int	next_in_first_half(t_node *stack, unsigned int goal)
 {
 	size_t			i;
 	size_t			len;
@@ -70,12 +70,12 @@ int	next_value_in_first_half(t_node *stack, unsigned int goal)
 		if (stack->index == goal)
 		{
 			stack = head;
-			return (SUCCESS);
+			return (ERROR);
 		}
 		stack = stack->next;
 	}
 	stack = head;
-	return (ERROR);
+	return (SUCCESS);
 }
 
 int	list_not_sorted(t_node *stack)
@@ -94,11 +94,4 @@ int	list_not_sorted(t_node *stack)
 	}
 	stack = head;
 	return (SUCCESS);
-}
-
-void	pb_and_increment(t_node **a, t_node **b, size_t *len, size_t *num)
-{
-	push(b, a, 'b');
-	(*num)++;
-	(*len)--;
 }

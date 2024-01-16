@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:20:52 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/10 11:20:02 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/16 14:42:26 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	push(t_node **to, t_node **from, int c)
 
 void	swap(t_node **stack, int c)
 {
-	t_node	*node_1;
 	t_node	*node_2;
 
 	if (!(*stack) || (*stack)->next == *stack)
@@ -48,15 +47,23 @@ void	swap(t_node **stack, int c)
 		ft_printf("sa\n");
 	else if (c == 'b')
 		ft_printf("sb\n");
-	node_1 = (*stack);
-	node_2 = (*stack)->next;
-    node_1->next = node_2->next;
-    node_2->prev = node_1->prev;
-	node_1->next->prev = node_1;
-	node_2->prev->next = node_2;
-    node_1->prev = node_2;
-    node_2->next = node_1;
-	(*stack) = node_2;
+	if (get_list_len(*stack) == 2)
+	{
+		(*stack)->next = *stack;
+		(*stack)->prev = *stack;
+		*stack = (*stack)->next;
+	}
+	else
+	{
+		node_2 = (*stack)->next;
+		(*stack)->next = node_2->next;
+		node_2->prev = (*stack)->prev;
+		(*stack)->next->prev = *stack;
+		node_2->prev->next = node_2;
+		(*stack)->prev = node_2;
+		node_2->next = *stack;
+		(*stack) = node_2;
+	}
 }
 
 void	rotate(t_node **stack, int c)

@@ -5,5 +5,4 @@ checker_linux
 LIBFT/.dir_build/
 pro_checker/
 tester/
-visualizer/
-gemartin-le-sang/
+visualizer

@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:11:30 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/12 16:36:28 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/16 14:40:47 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	sort_small_stack(t_node **stack)
 	ssize_t	len;
 
 	len = get_list_len(*stack);
-	while (len-- > 0)
+	while (--len > 0)
 	{
 		if ((*stack)->index == find_max(*stack))
 			rotate(stack, 'a');
@@ -67,7 +67,7 @@ static void	sort_medium_stack(t_node **a, t_node **b)
 	{
 		while ((*a)->index != index)
 		{
-			if (!next_value_in_first_half(*a, index))
+			if (next_in_first_half(*a, index))
 				rotate(a, 'a');
 			else
 				reverse_rotate(a, 'a');
@@ -83,26 +83,28 @@ static void	sort_medium_stack(t_node **a, t_node **b)
 
 static void	sort_b_to_a(t_node **a, t_node **b)
 {
-	size_t	max;
+	const size_t	max_a = find_max(*a);
+	size_t			max_b;
 
-	max = find_max(*b);
-	while (*b)
+	max_b = find_max(*b);
+	while (*b || (*a)->prev->index != max_a)
 	{
-		if ((*b)->index == max)
+		if ((*a)->prev->index == ((*a)->index - 1))
+			reverse_rotate(a, 'a');
+		else if (bhead_can_be_pushed(a, b, max_a, max_b))
+			push_bhead(a, b, &max_b);
+		else if (next_in_first_half(*b, max_b))
 		{
-			push(a, b, 'a');
-			max--;
-		}
-		if (!*b)
-			break ;
-		else if (!next_value_in_first_half(*b, max))
-		{
-			while ((*b)->index != max)
+			if (both_stacks_need_rotate(a, b))
+				rotate_ab(a, b);
+			else
 				rotate(b, 'b');
 		}
 		else
 		{
-			while ((*b)->index != max)
+			if (both_stacks_need_rotate(a, b))
+				reverse_rotate_ab(a, b);
+			else
 				reverse_rotate(b, 'b');
 		}
 	}
@@ -122,7 +124,6 @@ void	get_chunk_and_sort(t_node **a, t_node **b)
 	if (nb_nodes > M_LIST)
 		chunk = (0.0000000053 * (nb_nodes * nb_nodes)) \
 		+ (0.03 * nb_nodes) + L_CHUNK;
-
 	if (nb_nodes > S_LIST)
 	{
 		sort_a_to_b(a, b, chunk, INTERMEDIATE_SORT);
