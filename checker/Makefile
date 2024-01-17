@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:29:44 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/01/17 09:44:30 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/01/17 10:06:10 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ clean:
 	$(RM) $(BUILD_DIR) $(LIBFT_DIR)/$(BUILD_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(LIB)
+	$(RM) $(NAME) $(LIBFT_DIR)/$(LIB)
 	@echo Bye !
 	@echo
 
