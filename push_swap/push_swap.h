@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/16 15:03:00 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/17 16:55:34 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "sys/types.h" // ssize_t
-# include "LIBFT/libft.h" // LIBFT header
+# include "../LIBFT/libft.h" // LIBFT header
 
 # define ERROR 1
 # define SUCCESS 0
@@ -42,7 +42,6 @@ int				bhead_can_be_pushed(t_node **a, \
 int				both_stacks_need_rotate(t_node **a, t_node **b);
 int				data_is_duplicate(t_node *stack);
 int				data_is_invalid(t_node *stack);
-int				is_neg_digit(int c);
 int				list_not_sorted(t_node *stack);
 int				next_in_first_half(t_node *stack, unsigned int goal);
 size_t			get_list_len(t_node *stack);

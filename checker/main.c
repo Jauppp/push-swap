@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:50:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/16 17:33:11 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/17 18:00:07 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,27 @@ int	main(int argc, char *argv[])
 {
 	t_node		*a;
 	t_node		*b;
-	t_list		*instruct_list;
-	// t_list		*head;
+	t_list		*rules;
 
 	if (!argv[1])
 		return (ERROR);
 	a = NULL;
 	b = NULL;
-	instruct_list = NULL;
+	rules = NULL;
 	if (!parsing(&a, argc, argv))
-		return (ERROR);
-	get_instructions(&instruct_list);
-	apply_instructions(&a, &b, instruct_list);
+		return (STDERR_FILENO);
+	if (!init_rules(&rules))
+	{
+		free_stack(&a, &b);
+		return (STDERR_FILENO);
+	}
+	if (input_is_invalid(&a, &b, &rules))
+		return (STDERR_FILENO);
+	apply_rules(&a, &b, &rules);
+	if (list_not_sorted(a) || b)
+		ft_printf("KO\n");
+	else if (!list_not_sorted(a) && !b)
+		ft_printf("OK\n");
+	ft_lstfree(&rules);
 	free_stack(&a, &b);
 }
