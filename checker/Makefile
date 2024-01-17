@@ -6,7 +6,7 @@
 #    By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:29:44 by cdomet-d          #+#    #+#              #
-#    Updated: 2024/01/16 16:30:42 by cdomet-d         ###   ########lyon.fr    #
+#    Updated: 2024/01/17 09:44:30 by cdomet-d         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CPPFLAGS = -MMD -MP
 MAKEFLAGS += --no-print-directory
 ARGS = "50 55 45 35 30 25 20 15 5 10"
 BUILD_DIR := .dir_build
-LIBFT_DIR := LIBFT
+LIBFT_DIR := ../LIBFT
 
 SRCS := main.c \
 		algorithm_utils.c \
@@ -49,7 +49,7 @@ $(NAME): $(LIBFT_DIR)/$(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(LIBFT_DIR) -lft
 	@echo "All done ! Thanks for waiting :)"
 	
-$(BUILD_DIR)/%.o:%.c checker.h LIBFT/libft.h
+$(BUILD_DIR)/%.o:%.c checker.h $(LIBFT_DIR)/libft.h
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $< 
 

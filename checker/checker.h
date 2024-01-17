@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/16 17:37:57 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/17 09:45:04 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "sys/types.h" // ssize_t
 # include "fcntl.h"
 # include "stdio.h"
-# include "LIBFT/libft.h" // LIBFT header
+# include "../LIBFT/libft.h" // LIBFT header
 
 # define ERROR 1
 # define SUCCESS 0
