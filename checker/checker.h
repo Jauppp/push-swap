@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/17 17:52:26 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/19 11:02:21 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ void	swap(t_node **stack, int c);
 void	apply_current_rule(t_node **a, t_node **b, t_list **rules);
 void	apply_rules(t_node **a, t_node **b, t_list **rules);
 int		list_not_sorted(t_node *stack);
-int 	input_is_invalid(t_node **a, t_node **b, t_list **rules);
-
-
-
-
+int		input_is_invalid(t_node **a, t_node **b, t_list **rules);
 
 #endif

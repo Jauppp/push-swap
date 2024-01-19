@@ -15,7 +15,7 @@
 t_list	*get_input(t_list **rules)
 {
 	t_list	*new_node;
-	
+
 	new_node = ft_lstnew(get_next_line(STDIN_FILENO));
 	if (!new_node)
 		(ft_lstfree(rules));
