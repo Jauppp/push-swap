@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:11:30 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/16 14:40:47 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/19 17:06:35 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,7 @@ void	get_chunk_and_sort(t_node **a, t_node **b)
 	else
 		sort_a_to_b(a, b, chunk, NO_INTERMEDIATE_SORT);
 	sort_small_stack(a);
+	if (!*b)
+		return ;
 	sort_b_to_a(a, b);
 }

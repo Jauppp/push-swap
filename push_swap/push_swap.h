@@ -6,7 +6,7 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:28:35 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/17 16:55:34 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/19 13:58:52 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_node			*append_back(t_node **stack, t_node	*new_node);
 t_node			*append_front(t_node **stack, t_node *new_node);
 t_node			*free_stack(t_node **a, t_node **stack_b);
 t_node			*init_stack(t_node **a, char *arg);
-t_node			*parsing(t_node **stack, size_t argc, char *argv[]);
+t_node			*parse_and_init_stack(t_node **stack, size_t argc, char *argv[]);
 t_node			*stack_new(long data);
 unsigned int	find_max(t_node *stack);
 unsigned int	find_min(t_node *stack);

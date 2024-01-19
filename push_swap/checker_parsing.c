@@ -6,11 +6,11 @@
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:13:16 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/19 13:59:46 by cdomet-d         ###   ########lyon.fr   */
+/*   Updated: 2024/01/19 13:37:46 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 t_node	*init_stack(t_node **stack_a, char *arg)
 {

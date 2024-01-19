@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_both_stack_rules.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdomet-d <cdomet-d@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 14:50:09 by cdomet-d          #+#    #+#             */
-/*   Updated: 2024/01/19 13:56:16 by cdomet-d         ###   ########lyon.fr   */
+/*   Created: 2023/12/27 14:20:48 by cdomet-d          #+#    #+#             */
+/*   Updated: 2024/01/19 14:45:19 by cdomet-d         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	main(int argc, char *argv[])
+void	checker_swap_ab(t_node **a, t_node **b)
 {
-	t_node	*a;
-	t_node	*b;
+	checker_swap(a);
+	checker_swap(b);
+}
 
-	if (!argv[1])
-		return (ERROR);
-	a = NULL;
-	b = NULL;
-	if (!parse_and_init_stack(&a, argc, argv))
-		return (ERROR);
-	if (list_not_sorted(a))
-		get_chunk_and_sort(&a, &b);
-	else
-	{
-		free_stack(&a, NULL);
-		return (ERROR);
-	}
-	free_stack(&a, &b);
+void	checker_rotate_ab(t_node **a, t_node **b)
+{
+	checker_rotate(a);
+	checker_rotate(b);
+}
+
+void	checker_reverse_rotate_ab(t_node **a, t_node **b)
+{
+	checker_reverse_rotate(a);
+	checker_reverse_rotate(b);
 }
